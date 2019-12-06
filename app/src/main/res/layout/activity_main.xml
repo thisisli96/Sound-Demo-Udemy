@@ -33,4 +33,15 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/btnplay" />
+
+	<SeekBar
+		android:id="@+id/VolumeSeekBar"
+		android:layout_width="0dp"
+		android:layout_height="19dp"
+		android:layout_marginStart="52dp"
+		android:layout_marginTop="59dp"
+		android:layout_marginEnd="32dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/btnpause" />
 </androidx.constraintlayout.widget.ConstraintLayout>
