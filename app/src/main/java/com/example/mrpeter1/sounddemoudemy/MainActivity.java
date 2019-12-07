@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.VideoView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
    Button btnplay, btnpause;
     MediaPlayer mediaPlayer;
@@ -60,6 +63,33 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        final SeekBar scrubSeekBar = findViewById(R.id.scrubSeekBar);
+        scrubSeekBar.setMax(mediaPlayer.getDuration());
+        scrubSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("Scrub sneekbar moved", Integer.toString(progress));
+                mediaPlayer.seekTo(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                scrubSeekBar.setProgress(mediaPlayer.getCurrentPosition());
+            }
+        } ,0,  300);
 //
 //        btnplay.setOnClickListener(new View.OnClickListener() {
 //            @Override
